@@ -1,0 +1,26 @@
+public static void GetComb(List<string> res, int length, string prefix = "")
+      {
+          
+          if (length == 0)
+          {
+              var k = "";
+              //Console.WriteLine(prefix);
+              
+              foreach (var i in prefix.Split('|')) { k += Alphabet[int.Parse(i)];}
+              res.Add(k);
+              //Console.WriteLine(k);
+              return;
+          }
+
+          for (int i = 0; i < Alphabet.Length; i++)
+          {
+              if (prefix == "")
+              {
+                  GetComb(res,length - 1, prefix + i.ToString());
+              }
+              else
+              {
+                  GetComb(res,length - 1, prefix + '|' +  i.ToString());
+              }
+          }
+      }
